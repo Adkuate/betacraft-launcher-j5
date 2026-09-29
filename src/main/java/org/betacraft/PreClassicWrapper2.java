@@ -162,9 +162,6 @@ public class PreClassicWrapper2 extends Wrapper {
 			// Add game's applet to this window
 			this.setLayout(new BorderLayout());
 			this.add(a, "Center");
-
-			// Start Discord RPC
-			if (discord) discordThread.start();
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

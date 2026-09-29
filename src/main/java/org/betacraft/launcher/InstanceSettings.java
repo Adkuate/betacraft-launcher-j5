@@ -32,7 +32,6 @@ public class InstanceSettings extends JFrame implements LanguageElement {
 
 	public JCheckBox proxyCheck;
 	public JCheckBox keepOpenCheck;
-	public JCheckBox RPCCheck;
 	public JCheckBox showConsole;
 	public JCheckBox forceUpdate = null;
 
@@ -119,13 +118,6 @@ public class InstanceSettings extends JFrame implements LanguageElement {
 		keepOpenCheck.setOpaque(false);
 		keepOpenCheck.setSelected(Launcher.currentInstance.keepopen);
 		panel.add(keepOpenCheck, constr);
-
-		constr.gridy++;
-		RPCCheck = new JCheckBox(Lang.OPTIONS_RPC);
-		RPCCheck.setForeground(Color.LIGHT_GRAY);
-		RPCCheck.setOpaque(false);
-		RPCCheck.setSelected(Launcher.currentInstance.RPC);
-		panel.add(RPCCheck, constr);
 
 		constr.gridy++;
 		parametersText = new JLabel(Lang.OPTIONS_LAUNCH_ARGS);
@@ -443,7 +435,6 @@ public class InstanceSettings extends JFrame implements LanguageElement {
 		this.setTitle(Lang.OPTIONS_TITLE);
 		proxyCheck.setText(Lang.OPTIONS_PROXY);
 		keepOpenCheck.setText(Lang.OPTIONS_KEEP_OPEN);
-		RPCCheck.setText(Lang.OPTIONS_RPC);
 		parametersText.setText(Lang.OPTIONS_LAUNCH_ARGS);
 		dirChooser.setText(Lang.BROWSE);
 		dimensions1Text.setText(Lang.OPTIONS_WIDTH);
@@ -492,7 +483,6 @@ public class InstanceSettings extends JFrame implements LanguageElement {
 		Launcher.currentInstance.gameDir = dirPath.getText();
 		Launcher.currentInstance.keepopen = keepOpenCheck.isSelected();
 		Launcher.currentInstance.proxy = proxyCheck.isSelected();
-		Launcher.currentInstance.RPC = RPCCheck.isSelected();
 		Launcher.currentInstance.console = showConsole.isSelected();
 		Launcher.currentInstance.launchArgs = parameters.getText();
 

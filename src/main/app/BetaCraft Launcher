@@ -1,5 +1,5 @@
 #!/bin/bash
 
-DIR=$(cd "$(dirname "$0")"; pwd)
+DIR=$(cd "$(dirname "$0")" || exit; pwd)
 
 exec java -Xdock:name="BetaCraft Launcher" -Xdock:icon="$DIR/../Resources/icon.icns" -cp ".;$DIR;" -jar "$DIR/BetaCraft-Launcher-Java.jar"

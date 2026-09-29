@@ -371,23 +371,6 @@ public class Launcher {
 			}
 		}
 
-		// Download Discord RPC if the checkbox is selected
-		if (Launcher.currentInstance.RPC) {
-			File rpc = new File(BC.get() + "launcher/", "discord_rpc.jar");
-			String expected_hash = new CustomRequest("http://files.betacraft.uk/launcher/assets/discord_rpc.sha1").perform().response.replace("\n", "");
-			if (rpc.exists()) {
-				try {
-					String sha1 = Util.getSHA1(rpc);
-					if (!sha1.equals(expected_hash)) {
-						Launcher.downloadWithButtonOutput("http://files.betacraft.uk/launcher/assets/discord_rpc.jar", rpc, expected_hash);
-					}
-				} catch (Throwable t) {}
-			}
-			if (!rpc.exists() || Launcher.forceUpdate) {
-				Launcher.downloadWithButtonOutput("http://files.betacraft.uk/launcher/assets/discord_rpc.jar", rpc, expected_hash);
-			}
-		}
-
 		Release rel = Release.getReleaseByName(Launcher.currentInstance.version);
 		ModObject mo = ModsRepository.getMod(rel.getInfo().getVersion());
 		if (mo == null) {
@@ -454,12 +437,7 @@ public class Launcher {
 				}
 
 				// Additional parameters:
-				// - Discord RPC
 				String add = "";
-				if (instance.RPC) {
-					// Add DRPC to the launch arguments
-					add = colon + BC.get() + "launcher" + File.separator + "discord_rpc.jar";
-				}
 
 				// Let the user overwrite this argument - put it before the custom ones
 				params.add("-Djava.util.Arrays.useLegacyMergeSort=true");
