@@ -22,9 +22,10 @@ jobs:
         java-version: '1.5'
 
     - name: Build with Gradle
-      uses: gradle/actions/setup-gradle@5
+      uses: gradle/actions/setup-gradle@v6
       with:
         arguments: build
+        gradle-version: '1.12'
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v7
