@@ -22,10 +22,11 @@ jobs:
         distribution: zulu
         java-version: 6
 
-    - name: Build with Gradle
+    - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v6
-      with:
-        arguments: build
+
+    - name: Build with Gradle
+      run: gradle build
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v7
